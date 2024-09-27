@@ -132,12 +132,12 @@ pre
 	border-radius: 2px
 
 .wrapper-normal,
-.wrapper-large
+.wrapper-large,
+.wrapper-normal-home,
+.wrapper-large-home
 	height: 100%
 	width: 96%
 	margin: 0 auto
-	position: relative
-	z-index: 1
 
 	@media #{$mobile}
 		width: 88%
@@ -145,8 +145,15 @@ pre
 	@media #{$tablet}
 		width: 88%
 
-.wrapper-normal
+.wrapper-normal,
+.wrapper-normal-home
 	max-width: 560px
 
-.wrapper-large
+.wrapper-large,
+.wrapper-large-home
 	max-width: 810px
+
+.wrapper-normal-home,
+.wrapper-large-home
+	position: relative
+	z-index: 1

@@ -42,7 +42,7 @@ layout: compress
 
 </head>
 <body>
-    <div class="wrapper-{% if site.width == "normal" %}normal{% elsif site.width == "large" %}large{% endif %}">
+    <div class="wrapper-{% if site.width == "normal" %}normal{% elsif site.width == "large" %}large{% endif %}{% if page.title == "Home" %}-home{% endif %}">
         <div id="particles-js"></div>
         {% if page.layout == "post" %}
             <div class="post">
@@ -60,6 +60,8 @@ layout: compress
             </div>
     </div>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="{{ '/assets/js/particles-init.js' | relative_url }}"></script>   
+    <script src="{{ '/assets/js/particles-init.js' | relative_url }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ityped@0.0.10"></script>
+    <script src="{{ '/assets/js/ityped-init.js' | relative_url }}"></script>
 </body>
 </html>
