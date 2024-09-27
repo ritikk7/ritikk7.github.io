@@ -1,0 +1,13 @@
+<div class="work-experience">
+    <a href="{{ include.url }}" class="company-logo">
+        <img src="{{ include.logo }}" alt="{{ include.company }} Logo" />
+    </a>
+    <h3>{{ include.position }}</h3>
+    <p>{{ include.time_worked }}</p>
+
+    <div class="skills">
+        {% for skill in include.skills %}
+        <a href="{{ skill.url }}" class="skill-btn">{{ skill.name }}</a>
+        {% endfor %}
+    </div>
+</div>

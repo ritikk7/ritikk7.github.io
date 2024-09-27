@@ -1,0 +1,88 @@
+.experience
+    margin-top: 8rem
+    margin-bottom: 4rem
+
+    h2
+        font-size: 3rem
+        display: flex
+        align-items: center
+        gap: 1rem
+        position: relative  // Allows positioning the line
+
+        &:after
+            content: ''
+            flex-grow: 1  // Make the line extend
+            height: 2px
+            background-color: $gama  // The color for the line
+            margin-left: 1rem  // Space between the title and the line
+            align-self: center
+            display: inline-block
+            position: relative
+            top: 2px  // Adjust to align it vertically with the text
+
+        i
+            font-size: 1.5rem
+
+.work-experience-section
+    padding-left: 0rem
+
+.teaching-experience-section
+    padding-left: 0rem
+    
+    .ubc-logo
+        display: block
+        margin: 0 auto 20px
+        margin-top: 8rem
+        width: 350px
+        height: auto
+
+.work-experience, .teaching-experience
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-top: 8rem
+    margin-bottom: 8rem
+    font-family: $fontSans
+
+    a
+        text-decoration: none
+        color: inherit
+        transition: color 0.3s ease
+
+        &:hover
+            color: lighten($alpha, 20%)  // Transition to a lighter color on hover
+
+    .company-logo
+        img
+            width: 350px
+            height: auto
+            margin-bottom: 0.5rem
+
+    h3
+        font-size: 2.5rem
+        margin-bottom: 0
+
+    p
+        font-size: 2rem
+        color: $alpha
+        margin-top: 1rem
+        margin-bottom: 1.5rem
+
+    .skills
+        display: flex
+        justify-content: center
+        gap: 0.5rem
+
+        .skill-btn
+            background-color: $delta
+            color: $zeta
+            border: none
+            padding: 0.5rem 1rem
+            border-radius: 20px
+            text-decoration: none
+            font-size: 1.5rem
+            cursor: pointer
+            transition: background-color 0.3s ease
+
+            &:hover
+                background-color: darken($delta, 10%)
