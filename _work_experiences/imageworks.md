@@ -4,14 +4,24 @@ layout: post
 order: 1
 logo: "/assets/images/sony-logo.png"
 position: "Software Engineer"
-time_worked: "June 2023 - August 2023"
+time_worked: "May 2024 - December 2024"
 skills:
   - name: Python
     url: "https://www.python.org"
-  - name: JavaScript
-    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-  - name: React
-    url: "https://reactjs.org"
+  - name: TypeScript
+    url: "https://www.typescriptlang.org/"
+  - name: Node
+    url: "https://nodejs.org/en"
+  - name: Angular
+    url: "https://angular.dev/"
+  - name: Electron
+    url: "https://www.electronjs.org/"
+  - name: Flask
+    url: "https://flask.palletsprojects.com/en/3.0.x/"
+  - name: Docker
+    url: "https://www.docker.com/"
+  - name: Linux
+    url: "https://www.linux.org/"
 ---
 
-During my time at Sony Pictures Imageworks, I worked on end-to-end ownership of internal tools used by artists...
+Coming Soon

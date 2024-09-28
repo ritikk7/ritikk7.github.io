@@ -3,15 +3,19 @@ title: "Optum"
 layout: post
 order: 3
 logo: "/assets/images/optum-logo.png"
-position: "Software Engineer"
-time_worked: "June 2023 - August 2023"
+position: "Software Development Engineer"
+time_worked: "September 2021 - April 2022"
 skills:
-  - name: Python
-    url: "https://www.python.org"
   - name: JavaScript
     url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-  - name: React
-    url: "https://reactjs.org"
+  - name: C#
+    url: "https://learn.microsoft.com/en-us/dotnet/csharp/"
+  - name: .NET
+    url: "https://dotnet.microsoft.com/en-us/"
+  - name: Bash
+    url: "https://www.gnu.org/software/bash/"
+  - name: Software Packaging
+    url: "https://www.advancedinstaller.com/what-is-software-packaging.html"
 ---
 
-During my time at Sony Pictures Imageworks, I worked on end-to-end ownership of internal tools used by artists...
+Coming Soon
