@@ -1,0 +1,67 @@
+---
+title: "CPSC 317 Course Review"
+layout: post
+date: 2024-09-26
+tag:
+- Course Review
+- Java
+- C
+category: blog
+author: rkeswani
+description: A review of the CPSC 317 course covering the content, workload, and personal experience.
+---
+
+In my very humble opinion, if you’re a computer science student, you should absolutely know how the internet works—beyond just “it’s magic!” CPSC 317 is the course that breaks down the nitty-gritty of how computer networks operate. Spoiler: there’s a lot more to it than just Wi-Fi and clicking refresh.
+
+---
+
+## Tech Stack
+
+- Java
+- C
+
+---
+
+## Pre-Req Courses
+
+- CPSC 213
+- CPSC 221
+
+---
+
+## Course Content
+
+- Designing systems that don’t crash when too many people show up (aka scalability and reliability in distributed systems)
+- Using layers and abstractions to make complicated things easier (or so they say)
+- Routing, naming, and addressing (basically, internet GPS)
+- How to deal with data loss, isolation, and performance issues
+- Some good ol’ privacy and security stuff
+
+---
+
+## Workload Split
+
+- **Participation**: 4% (iClickers)
+- **Programming Assignments**: 30% (anywhere from 3-5, depending on how nice the prof feels)
+- **Quizzes**: 30% (5 mini-exams tested in the CBTF)
+- **Final Exam**: 36%
+
+---
+
+### Concept Complexity: 3/5
+The theory part isn’t too bad—it's fairly straightforward. But the programming assignments? Oh boy. Those PAs aren’t playing around. If you didn’t pay attention in labs, you’ll be staring at your code wondering what went wrong with your life choices.
+
+### Grade Difficulty: 3/5
+Not the hardest course out there, but it does demand some effort. This isn’t a stroll in the park for an A, but a B is pretty doable if you put in the work. The average tends to hover around 75%, so you’re in decent company.
+
+### Content Engagement: 2.5/5
+If learning how the internet works is your jam, you’ll probably enjoy this. But let’s be real, some of it can feel dry. That said, the prof does teach you how to send undetectable spam emails at one point, so there’s that!
+
+### Task Intensity: 4/5
+The programming assignments are the main culprit here. They’re long and require lots of effort, so block out some time. The exam prep is less intense than the PAs, but still, it’s a time sink depending on how much content your prof decides to pack in.
+
+### Career Relevance: 3.5/5
+If you're eyeing a job at a networking company like Arista Networks, this course will come in handy. Even if that’s not your goal, the stuff about security and performance is super useful. I even ended up using some of what I learned in one of my co-op jobs. Plus, as a CS major, it’s probably a good idea to know how the internet works, right?
+
+## Lecture Attendance: 3/5
+Lectures are helpful, but a lot of the content is out there on the internet (ironic, right?). Missing a couple won’t tank your grade, but the lectures definitely help with exam prep. The labs, on the other hand, are essential for surviving the PAs, so I’d recommend showing up for those.

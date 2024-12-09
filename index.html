@@ -2,3 +2,37 @@
 layout: page
 title: Home
 ---
+
+<section class="experience work-experience-section">
+    <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+
+    {% assign sorted_work_experiences = site.work_experiences | sort: 'order' %}
+    {% for experience in sorted_work_experiences %}
+    <div class="experience-block">
+        {% include work-experience.html
+            title=experience.title
+            url=experience.url
+            logo=experience.logo
+            position=experience.position
+            time_worked=experience.time_worked 
+            skills=experience.skills %}
+    </div>
+    {% endfor %}
+</section>
+
+<section class="experience teaching-experience-section">
+    <h2><i class="fas fa-graduation-cap"></i> TA Experience</h2>
+
+    <img src="/assets/images/ubc-logo.png" alt="UBC Logo" class="ubc-logo" />
+    {% assign sorted_teaching_experiences = site.teaching_experiences | sort: 'order' %}
+    {% for experience in sorted_teaching_experiences %}
+    <div class="experience-block">
+        {% include teaching-experience.html 
+            url=experience.url 
+            course_number=experience.course_number 
+            course_name=experience.course_name 
+            time_worked=experience.time_worked 
+            skills=experience.skills %}
+    </div>
+    {% endfor %}
+</section>

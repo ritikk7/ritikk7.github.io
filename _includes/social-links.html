@@ -13,12 +13,6 @@
         </a>
     {% endif %}
 
-    {% if site.instagram %}
-        <a class="link" data-title="instagram.com/{{ site.instagram }}" href="https://instagram.com/{{ site.instagram }}" target="_blank"  rel="noopener" alt="anchor link for social media instagram" aria-label="anchor link for social media instagram">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-    {% endif %}
-
     {% if site.linkedin %}
         <a class="link" data-title="linkedin.com/in/{{ site.linkedin }}" href="https://www.linkedin.com/in/{{ site.linkedin }}" target="_blank"  rel="noopener" alt="anchor link for social media linkedin" aria-label="anchor link for social media linkedin">
             <i class="fa-brands fa-linkedin"></i>
@@ -34,6 +28,12 @@
     {% if site.email %}
         <a class="link" data-title="{{ site.email }}" href="mailto:{{ site.email }}"  rel="noopener" alt="anchor link for email" aria-label="anchor link for email">
             <i class="fa-regular fa-envelope"></i>
+        </a>
+    {% endif %}
+
+    {% if site.instagram %}
+        <a class="link" data-title="instagram.com/{{ site.instagram }}" href="https://instagram.com/{{ site.instagram }}" target="_blank"  rel="noopener" alt="anchor link for social media instagram" aria-label="anchor link for social media instagram">
+            <i class="fa-brands fa-instagram"></i>
         </a>
     {% endif %}
 </div>

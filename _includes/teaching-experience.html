@@ -1,0 +1,12 @@
+<div class="teaching-experience">
+    <a href="{{ include.url }}">
+        <h3>{{ include.course_number }}: {{ include.course_name }}</h3>
+    </a>
+    <p>{{ include.time_worked }}</p>
+
+    <div class="skills">
+        {% for skill in include.skills %}
+        <a href="{{ skill.url }}" class="skill-btn">{{ skill.name }}</a>
+        {% endfor %}
+    </div>
+</div>
