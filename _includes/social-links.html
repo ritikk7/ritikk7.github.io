@@ -25,6 +25,12 @@
         </a>
     {% endif %}
 
+    {% if site.imdb %}
+        <a class="link" data-title="imdb.com/{{ site.imdb }}" href="https://www.imdb.com/name/{{ site.imdb }}" target="_blank"  rel="noopener" alt="anchor link for social media imdb" aria-label="anchor link for social media imdb">
+            <i class="fa-brands fa-imdb"></i>
+        </a>
+    {% endif %}
+
     {% if site.email %}
         <a class="link" data-title="{{ site.email }}" href="mailto:{{ site.email }}"  rel="noopener" alt="anchor link for email" aria-label="anchor link for email">
             <i class="fa-regular fa-envelope"></i>
