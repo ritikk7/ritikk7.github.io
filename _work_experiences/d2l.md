@@ -1,7 +1,7 @@
 ---
 title: "D2L"
 layout: post
-order: 2
+order: 3
 logo: "/assets/images/d2l-logo.png"
 position: "Full-Stack Software Developer"
 time_worked: "January 2023 - August 2023"

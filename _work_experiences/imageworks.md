@@ -1,7 +1,7 @@
 ---
 title: "Sony Pictures Imageworks"
 layout: post
-order: 1
+order: 2
 logo: "/assets/images/sony-logo.png"
 position: "Software Engineer"
 time_worked: "May 2024 - December 2024"
