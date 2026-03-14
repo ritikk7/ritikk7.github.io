@@ -1,0 +1,25 @@
+---
+layout: page
+title: Course Reviews
+---
+
+<section class="list">
+  {% assign reviews = site.posts %}
+  {% assign review_count = 0 %}
+  {% for post in reviews %}
+    {% if post.hidden != true and post.tags contains 'Course Review' %}
+      {% assign review_count = review_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+
+  {% if review_count == 0 %}
+    <p class="text-center">No course reviews yet.</p>
+  {% else %}
+    {% for post in reviews %}
+      {% if post.hidden != true and post.tags contains 'Course Review' %}
+        {% include blog-post.html %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</section>
+

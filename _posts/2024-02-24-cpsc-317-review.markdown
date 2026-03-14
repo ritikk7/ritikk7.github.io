@@ -2,7 +2,7 @@
 title: "CPSC 317 Course Review"
 layout: post
 date: 2024-09-26
-tag:
+tags:
 - Course Review
 - Java
 - C

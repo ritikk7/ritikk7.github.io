@@ -2,7 +2,7 @@
 title: "Course Ranking Criteria"
 layout: post
 date: 2024-09-25
-tag:
+tags:
 - Course Review
 category: blog
 author: rkeswani
