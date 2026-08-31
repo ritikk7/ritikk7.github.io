@@ -1,11 +1,10 @@
-{% if page.title == "Home"
-   or page.title == "Blog"
-   or page.title == "Projects"
-   or page.title == "Tags"
-   or page.title == "Course Reviews"
-%}{% assign showHeader = true %}{% endif %}
+{% assign header_pages = "Home,Blog,Projects,Tags,Course Reviews" | split: "," %}
+{% assign show_header = false %}
+{% if header_pages contains page.title %}
+    {% assign show_header = true %}
+{% endif %}
 
-{% if showHeader == true %}
+{% if show_header %}
     <header class="header-home {% if site.animation %}animated{% endif %}">
         {% if site.about %}
             <a class="link" href="{{ site.url }}/about">
@@ -18,7 +17,7 @@
         {% endif %}
 
         <h1 class="title">{{ site.title }}</h1>
-        <h2 class="description" data-bio="{{ site.bio }}"><span id="ityped-bio"></span></h2>
+        <h2 class="description" data-bio="{{ site.bio }}"><span id="ityped-bio">{{ site.bio }}</span></h2>
 
         {% include social-links.html %}
     </header>

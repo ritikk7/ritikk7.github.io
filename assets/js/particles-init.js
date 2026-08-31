@@ -1,4 +1,8 @@
-particlesJS('particles-js', {
+const particleContainer = document.getElementById("particles-js");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (particleContainer && !prefersReducedMotion && typeof window.particlesJS === "function") {
+window.particlesJS("particles-js", {
     "particles": {
         "number": {
             "value": 200,
@@ -82,3 +86,4 @@ particlesJS('particles-js', {
     },
     "retina_detect": true
 });
+}

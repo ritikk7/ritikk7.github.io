@@ -26,26 +26,39 @@ layout: compress
 
 </head>
 <body>
+    {% assign header_pages = "Home,Blog,Projects,Tags,Course Reviews" | split: "," %}
+    {% assign show_header = false %}
+    {% if header_pages contains page.title %}
+        {% assign show_header = true %}
+    {% endif %}
+
     <div class="wrapper-{% if site.width == "normal" %}normal{% elsif site.width == "large" %}large{% endif %}{% if page.title == "Home" %}-home{% endif %}">
-        <div id="particles-js"></div>
-        {% if page.layout == "post" %}
-            <div class="post">
-        {% else %}
-            {% if showHeader != true %}
-                <div class="page {{ page.title | downcase }}">
-            {% else %}
-                <div class="{{ page.title | downcase }}">
-            {% endif %}
+        {% if page.title == "Home" %}
+            <div id="particles-js" aria-hidden="true"></div>
         {% endif %}
 
+        {% if page.layout == "post" %}
+            {% assign content_class = "post" %}
+        {% elsif show_header %}
+            {% assign content_class = page.title | slugify %}
+        {% else %}
+            {% assign page_class = page.title | slugify %}
+            {% assign content_class = "page " | append: page_class %}
+        {% endif %}
+
+        <main class="{{ content_class }}">
             {{ content }}
-            </div>
-                </div>
-            </div>
+        </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="{{ '/assets/js/particles-init.js' | relative_url }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ityped@0.0.10"></script>
-    <script src="{{ '/assets/js/ityped-init.js' | relative_url }}"></script>
+
+    {% if page.title == "Home" %}
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="{{ '/assets/js/particles-init.js' | relative_url }}"></script>
+    {% endif %}
+
+    {% if show_header %}
+        <script src="https://cdn.jsdelivr.net/npm/ityped@0.0.10"></script>
+        <script src="{{ '/assets/js/ityped-init.js' | relative_url }}"></script>
+    {% endif %}
 </body>
 </html>

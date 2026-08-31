@@ -1,8 +1,21 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const bioElement = document.querySelector(".description");
-    const bioText = bioElement.getAttribute("data-bio");  // Pull bio from data attribute
+document.addEventListener("DOMContentLoaded", function () {
+    const bioElement = document.querySelector(".description[data-bio]");
+    const bioTarget = document.querySelector("#ityped-bio");
 
-    ityped.init(document.querySelector("#ityped-bio"), {
+    if (!bioElement || !bioTarget) {
+        return;
+    }
+
+    const bioText = bioElement.getAttribute("data-bio");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!bioText || prefersReducedMotion || !window.ityped || typeof window.ityped.init !== "function") {
+        bioTarget.textContent = bioText || "";
+        return;
+    }
+
+    bioTarget.textContent = "";
+    window.ityped.init(bioTarget, {
         strings: [bioText],
         loop: true,
         typeSpeed: 100,
