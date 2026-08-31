@@ -11,7 +11,7 @@ tag:
 star: true
 category: blog
 author: johndoe
-description: Markdown summary with different options
+description: Reference guide for common Markdown elements
 ---
 
 ## Basic formatting

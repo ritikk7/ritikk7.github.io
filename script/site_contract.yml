@@ -1,0 +1,32 @@
+pages:
+  index.html:
+    main_class: home
+    required_scripts:
+      - particles.js/2.0.0/particles.min.js
+      - ityped@0.0.10
+  blog/index.html:
+    main_class: blog
+    required_scripts:
+      - ityped@0.0.10
+    forbidden_scripts:
+      - particles.js/2.0.0/particles.min.js
+  course-reviews/index.html:
+    main_class: course-reviews
+    required_scripts:
+      - ityped@0.0.10
+    forbidden_scripts:
+      - particles.js/2.0.0/particles.min.js
+  cpsc-317-review/index.html:
+    main_class: post
+    forbidden_scripts:
+      - particles.js/2.0.0/particles.min.js
+      - ityped@0.0.10
+  404.html:
+    main_class: page
+    forbidden_scripts:
+      - particles.js/2.0.0/particles.min.js
+      - ityped@0.0.10
+
+required_css_selectors:
+  - .blog>.list
+  - .course-reviews>.list

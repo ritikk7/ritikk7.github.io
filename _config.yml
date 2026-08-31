@@ -121,10 +121,12 @@ compress_html:
       - stage
 
 exclude:
-  [
-    "README.md",
-    "Gemfile",
-    "Gemfile.lock",
-    "FAQ.md",
-    "vendor",
-  ]
+  - AGENTS.md
+  - CONTRIBUTING.md
+  - README.md
+  - docker-compose.yml
+  - Gemfile
+  - Gemfile.lock
+  - docs/reference
+  - script
+  - vendor

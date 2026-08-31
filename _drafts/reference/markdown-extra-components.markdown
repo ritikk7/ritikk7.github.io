@@ -11,7 +11,7 @@ tag:
 - extra
 category: blog
 author: jamesfoster
-description: Markdown summary with different options
+description: Reference guide for inherited Markdown components
 ---
 
 ## Summary:
