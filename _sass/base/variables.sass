@@ -1,16 +1,31 @@
 $fontSans: "Helvetica Neue", Helvetica, Arial, sans-serif
 $fontMonospace: "Consolas", Liberation Mono, Menlo, Courier, monospace
 
-$alpha: #666
-$beta: #222
-$gama: #575757
-$delta: #4b0082
-$epsilon: #ededed
-$omega: #fff
-$zeta: #000
-$kappa: #27f36a26
+\:root
+	--color-text: #666
+	--color-heading: #222
+	--color-muted: #575757
+	--color-accent: #4b0082
+	--color-border: #ededed
+	--color-background: #fff
+	--color-contrast: #000
+	--color-highlight: #27f36a26
+	--color-subtle-hover: #999
+	--color-accent-hover: #2e004f
+	--font-weight-thin: 300
 
-$thin-font: 300
+$alpha: var(--color-text)
+$beta: var(--color-heading)
+$gama: var(--color-muted)
+$delta: var(--color-accent)
+$epsilon: var(--color-border)
+$omega: var(--color-background)
+$zeta: var(--color-contrast)
+$kappa: var(--color-highlight)
+$subtle-hover: var(--color-subtle-hover)
+$accent-hover: var(--color-accent-hover)
+
+$thin-font: var(--font-weight-thin)
 
 $mobile: "only screen and (max-width: 400px)"
 $tablet: "only screen and (min-width: 400px) and (max-width: 1050px)"

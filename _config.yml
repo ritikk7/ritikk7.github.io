@@ -23,6 +23,10 @@ resume-url: https://google.com/?q=my+resume
 # url: https://sergiokopplin.github.io/indigo
 url: https://ritikk7.github.io
 
+# This repository provides its own layouts and styles. Prevent GitHub Pages
+# from injecting the default Primer theme and its stylesheet.
+theme: null
+
 permalink: /:title/
 
 # To enable google analytics, supply your token below
@@ -104,6 +108,11 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jemoji
+
+# Keep the Sass load path explicit for reproducible local builds on Windows.
+sass:
+  load_paths:
+    - _sass
 
 compress_html:
   ignore:

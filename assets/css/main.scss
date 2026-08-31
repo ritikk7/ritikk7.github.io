@@ -1,6 +1,10 @@
+---
+---
 
+@import "base/variables";
 @import "base/variables-dark";
 @import "base/normalize";
+@import "base/syntax";
 @import "base/syntax-dark";
 @import "base/general";
 @import "base/helpers";
@@ -22,3 +26,13 @@
 @import "components/social-links";
 @import "components/spoiler";
 @import "components/experience";
+
+{% if site.dark-theme == "auto" %}
+@media (prefers-color-scheme: dark) {
+    @include dark-theme-variables;
+    @include dark-syntax;
+}
+{% elsif site.dark-theme %}
+@include dark-theme-variables;
+@include dark-syntax;
+{% endif %}
