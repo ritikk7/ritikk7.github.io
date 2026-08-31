@@ -22,6 +22,8 @@ resume-url: https://google.com/?q=my+resume
 
 # url: https://sergiokopplin.github.io/indigo
 url: https://ritikk7.github.io
+baseurl: ""
+repository: ritikk7/ritikk7.github.io
 
 # This repository provides its own layouts and styles. Prevent GitHub Pages
 # from injecting the default Primer theme and its stylesheet.
