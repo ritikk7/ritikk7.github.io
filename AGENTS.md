@@ -17,11 +17,12 @@ repository.
   change is explicitly approved.
 - Treat CSS class names as contracts between layouts and Sass. When changing a
   class, update and test every matching selector.
-- Keep inherited examples in `_drafts/reference/`; do not move them back into
-  `_posts` or delete their supporting components without approval.
+- Keep inherited examples in `content/_drafts/reference/`; do not move them
+  back into `content/_posts` or delete their supporting components without
+  approval.
 - Do not edit generated files under `_site`.
 - Do not commit `_site`, temporary screenshots, or
-  `.website-cleanup-plan.md`.
+  `.local/website-cleanup-plan.md`.
 
 ## Required verification
 
@@ -50,8 +51,10 @@ bundle exec ruby script/verify_site.rb _site-drafts --allow-drafts
 ## Repository context
 
 - The site is built with Jekyll through the `github-pages` gem.
+- Posts, drafts, and experience collections live under `content/`.
 - `assets/css/main.scss` is the only site stylesheet entry point.
+- Public page sources live in `_pages/` and must declare explicit permalinks.
 - `assets/js/particles-init.js` and particles.js are Home-only.
 - `assets/js/ityped-init.js` and iTyped are limited to shared-header pages.
-- If `.website-cleanup-plan.md` exists locally, use it as the working decision
-  and verification log, but never add it to Git.
+- If `.local/website-cleanup-plan.md` exists locally, use it as the working
+  decision and verification log, but never add it to Git.

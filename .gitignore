@@ -4,3 +4,4 @@ _site-drafts
 .sass-cache
 .bundle
 vendor/
+.local/

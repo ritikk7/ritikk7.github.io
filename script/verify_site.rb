@@ -16,6 +16,8 @@ abort "Generated site not found: #{SITE_DIR}" unless SITE_DIR.directory?
 config = YAML.safe_load_file(PROJECT_DIR.join("_config.yml"), aliases: true)
 contract = YAML.safe_load_file(PROJECT_DIR.join("script/site_contract.yml"), aliases: true)
 site_host = URI.parse(config.fetch("url", "")).host
+collections_dir = config.fetch("collections_dir", "")
+reference_drafts_dir = PROJECT_DIR.join(collections_dir, "_drafts/reference")
 errors = []
 html_files = SITE_DIR.glob("**/*.html").sort
 
@@ -113,7 +115,7 @@ html_files.each do |html_file|
 end
 
 unless ALLOW_DRAFTS
-  PROJECT_DIR.glob("_drafts/reference/*.*").each do |draft|
+  reference_drafts_dir.glob("*.*").each do |draft|
     slug = draft.basename(draft.extname).to_s
     published_candidates = [SITE_DIR.join(slug, "index.html"), SITE_DIR.join("#{slug}.html")]
     if published_candidates.any?(&:file?)

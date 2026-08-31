@@ -61,6 +61,8 @@ authors:
 # normal = 560px / large = 810px
 width: large
 
+collections_dir: content
+
 collections:
   work_experiences:
     output: true
@@ -111,6 +113,9 @@ plugins:
   - jekyll-feed
   - jemoji
 
+include:
+  - _pages
+
 # Keep the Sass load path explicit for reproducible local builds on Windows.
 sass:
   load_paths:
@@ -124,9 +129,7 @@ compress_html:
 
 exclude:
   - AGENTS.md
-  - CONTRIBUTING.md
   - README.md
-  - docker-compose.yml
   - Gemfile
   - Gemfile.lock
   - docs/reference

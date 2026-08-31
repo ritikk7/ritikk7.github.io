@@ -3,7 +3,7 @@
 This repository contains Ritik Keswani's production personal website. Changes
 should be small, reviewable, and verified before they reach `master`.
 
-Automated coding tools must also follow [AGENTS.md](AGENTS.md).
+Automated coding tools must also follow [AGENTS.md](../AGENTS.md).
 
 ## Branch workflow
 
@@ -61,9 +61,11 @@ post, and 404. Check mobile layouts and reduced-motion behavior when relevant.
 
 ## Content and reference material
 
-- Production articles belong in `_posts`.
-- Inherited implementation examples belong in `_drafts/reference` and are not
-  included in normal builds.
+- Public page sources belong in `_pages` and must declare explicit permalinks
+  so source moves cannot change published URLs.
+- Production articles belong in `content/_posts`.
+- Inherited implementation examples belong in `content/_drafts/reference`
+  and are not included in normal builds.
 - Legacy theme notes belong in `docs/reference`, which Jekyll excludes.
 - Do not remove reference-only components until their examples have been
   reviewed and removal is explicitly approved.
