@@ -15,13 +15,39 @@ abort "Generated site not found: #{SITE_DIR}" unless SITE_DIR.directory?
 
 config = YAML.safe_load_file(PROJECT_DIR.join("_config.yml"), aliases: true)
 contract = YAML.safe_load_file(PROJECT_DIR.join("script/site_contract.yml"), aliases: true)
-site_host = URI.parse(config.fetch("url", "")).host
+errors = []
+configured_site_url = config.fetch("url", "").to_s.chomp("/")
+expected_site_url = contract.fetch("site_url").to_s.chomp("/")
+legacy_hosts = contract.fetch("legacy_hosts", [])
+site_uri = URI.parse(configured_site_url)
+site_host = site_uri.host
 collections_dir = config.fetch("collections_dir", "")
 reference_drafts_dir = PROJECT_DIR.join(collections_dir, "_drafts/reference")
-errors = []
 html_files = SITE_DIR.glob("**/*.html").sort
 
 errors << "No generated HTML files found in #{SITE_DIR}" if html_files.empty?
+errors << "Configured site URL must be #{expected_site_url}, found #{configured_site_url}" unless configured_site_url == expected_site_url
+errors << "Configured site URL must use HTTPS: #{configured_site_url}" unless site_uri.scheme == "https"
+errors << "Configured site URL must include a host: #{configured_site_url}" if site_host.to_s.empty?
+
+def public_url(relative_path, site_url, baseurl)
+  output_path = "/#{relative_path.to_s.tr('\\', '/')}".sub(%r{index\.html\z}, "")
+  normalized_baseurl = baseurl.to_s.strip
+  normalized_baseurl = "/#{normalized_baseurl}" unless normalized_baseurl.empty? || normalized_baseurl.start_with?("/")
+  normalized_baseurl = normalized_baseurl.chomp("/")
+  "#{site_url}#{normalized_baseurl}#{output_path}"
+end
+
+def absolute_internal_url?(raw_url, site_host)
+  uri = URI.parse(raw_url.to_s.strip)
+  uri.absolute? && uri.host == site_host
+rescue URI::InvalidURIError, ArgumentError
+  false
+end
+
+def legacy_host_pattern(host)
+  %r{https?://#{Regexp.escape(host)}(?=[/:?\#\"'\s<]|$)}i
+end
 
 def local_target(site_dir, html_file, raw_url, site_host)
   value = raw_url.to_s.strip
@@ -67,6 +93,27 @@ html_files.each do |html_file|
   source = html_file.read
   document = Nokogiri::HTML5.parse(source)
 
+  legacy_hosts.each do |legacy_host|
+    if source.match?(legacy_host_pattern(legacy_host))
+      errors << "#{relative_path}: legacy production host detected: #{legacy_host}"
+    end
+  end
+
+  expected_canonical = public_url(relative_path, expected_site_url, config.fetch("baseurl", ""))
+  canonical_links = document.css('link[rel~="canonical"]')
+  if canonical_links.length != 1
+    errors << "#{relative_path}: expected exactly one canonical link, found #{canonical_links.length}"
+  elsif canonical_links.first["href"] != expected_canonical
+    errors << "#{relative_path}: expected canonical #{expected_canonical}, found #{canonical_links.first['href']}"
+  end
+
+  open_graph_urls = document.css('meta[property="og:url"]')
+  if open_graph_urls.length != 1
+    errors << "#{relative_path}: expected exactly one Open Graph URL, found #{open_graph_urls.length}"
+  elsif open_graph_urls.first["content"] != expected_canonical
+    errors << "#{relative_path}: expected Open Graph URL #{expected_canonical}, found #{open_graph_urls.first['content']}"
+  end
+
   document.errors.each do |error|
     errors << "#{relative_path}: HTML5 parse error: #{error.message.strip}"
   end
@@ -99,6 +146,11 @@ html_files.each do |html_file|
       raw_url = node[attribute]
       next unless raw_url
 
+      canonical_link = node.name == "link" && node["rel"].to_s.split.include?("canonical")
+      if absolute_internal_url?(raw_url, site_host) && !canonical_link
+        errors << "#{relative_path}: internal #{attribute} must remain preview-local: #{raw_url}"
+      end
+
       target = local_target(SITE_DIR, html_file, raw_url, site_host)
       next unless target
 
@@ -112,6 +164,21 @@ html_files.each do |html_file|
       end
     end
   end
+end
+
+feed_file = SITE_DIR.join("feed.xml")
+if feed_file.file?
+  feed_source = feed_file.read
+  legacy_hosts.each do |legacy_host|
+    if feed_source.match?(legacy_host_pattern(legacy_host))
+      errors << "feed.xml: legacy production host detected: #{legacy_host}"
+    end
+  end
+  unless feed_source.include?(%(href="#{expected_site_url}/feed.xml"))
+    errors << "feed.xml: self URL must use #{expected_site_url}"
+  end
+else
+  errors << "Generated feed is missing: feed.xml"
 end
 
 unless ALLOW_DRAFTS

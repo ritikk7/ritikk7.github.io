@@ -1,3 +1,7 @@
+site_url: https://rkeswani.com
+legacy_hosts:
+  - ritikk7.github.io
+
 pages:
   index.html:
     main_class: home

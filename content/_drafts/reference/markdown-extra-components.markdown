@@ -54,7 +54,7 @@ Like the [Medium](https://medium.com/) component.
 {% highlight html %}
 <div class="side-by-side">
     <div class="toleft">
-        <img class="image" src="{{ site.url }}/{{ site.picture }}" alt="Alt Text">
+        <img class="image" src="{{ site.picture | relative_url }}" alt="Alt Text">
         <figcaption class="caption">Photo by John Doe</figcaption>
     </div>
 
@@ -66,7 +66,7 @@ Like the [Medium](https://medium.com/) component.
 
 <div class="side-by-side">
     <div class="toleft">
-        <img class="image" src="{{ site.url }}/{{ site.picture }}" alt="Alt Text">
+        <img class="image" src="{{ site.picture | relative_url }}" alt="Alt Text">
         <figcaption class="caption">Photo by John Doe</figcaption>
     </div>
 
@@ -84,7 +84,7 @@ Like the [Medium](https://medium.com/) component.
     </div>
 
     <div class="toright">
-        <img class="image" src="{{ site.url }}/{{ site.picture }}" alt="Alt Text">
+        <img class="image" src="{{ site.picture | relative_url }}" alt="Alt Text">
         <figcaption class="caption">Photo by John Doe</figcaption>
     </div>
 </div>
@@ -96,7 +96,7 @@ Like the [Medium](https://medium.com/) component.
     </div>
 
     <div class="toright">
-        <img class="image" src="{{ site.url }}/{{ site.picture }}" alt="Alt Text">
+        <img class="image" src="{{ site.picture | relative_url }}" alt="Alt Text">
         <figcaption class="caption">Photo by John Doe</figcaption>
     </div>
 </div>

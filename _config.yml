@@ -20,8 +20,9 @@ resume: false
 resume-external: true
 resume-url: https://google.com/?q=my+resume
 
-# url: https://sergiokopplin.github.io/indigo
-url: https://ritikk7.github.io
+# Canonical production origin. Internal navigation and assets should use
+# relative_url so local previews remain local.
+url: https://rkeswani.com
 baseurl: ""
 repository: ritikk7/ritikk7.github.io
 
