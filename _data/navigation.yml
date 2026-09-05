@@ -1,0 +1,25 @@
+- key: home
+  label: Home
+  url: /
+  visible: true
+
+- key: blog
+  label: Blog
+  url: /blog/
+  visible: true
+
+- key: course-reviews
+  label: Course Reviews
+  url: /course-reviews/
+  visible: true
+  keep_together: true
+
+- key: projects
+  label: Projects
+  url: /projects/
+  visible: true
+
+- key: about
+  label: About
+  url: /about/
+  visible: false
