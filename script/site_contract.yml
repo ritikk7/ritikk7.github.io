@@ -2,6 +2,21 @@ site_url: https://rkeswani.com
 legacy_hosts:
   - ritikk7.github.io
 
+general_entries:
+  source_patterns:
+    - content/_posts/*.md
+    - content/_posts/*.markdown
+  required_fields:
+    - kind
+    - topics
+    - summary
+  allowed_kinds:
+    - essay
+    - note
+    - review
+    - project
+  metadata_key_pattern: '\A[a-z0-9]+(?:-[a-z0-9]+)*\z'
+
 pages:
   index.html:
     main_class: home

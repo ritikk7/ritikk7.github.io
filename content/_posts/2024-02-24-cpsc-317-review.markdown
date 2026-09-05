@@ -9,6 +9,13 @@ tags:
 category: blog
 author: rkeswani
 description: A review of the CPSC 317 course covering the content, workload, and personal experience.
+kind: review
+topics:
+- education
+- technology
+series: ubc-course-notes
+summary: A review of CPSC 317 covering its content, workload, prerequisites, and my experience taking it.
+featured: false
 ---
 
 In my very humble opinion, if you’re a computer science student, you should absolutely know how the internet works—beyond just “it’s magic!” CPSC 317 is the course that breaks down the nitty-gritty of how computer networks operate. Spoiler: there’s a lot more to it than just Wi-Fi and clicking refresh.

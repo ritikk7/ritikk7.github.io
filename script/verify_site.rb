@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require "cgi"
+require "date"
 require "nokogiri"
 require "pathname"
 require "uri"
@@ -86,6 +87,23 @@ def target_exists?(target, raw_url)
   candidates.any?(&:file?)
 rescue URI::InvalidURIError
   false
+end
+
+def read_front_matter(source_file)
+  source = source_file.read
+  match = source.match(/\A---\s*\r?\n(.*?)\r?\n---\s*(?:\r?\n|\z)/m)
+  return [nil, "missing YAML front matter"] unless match
+
+  data = YAML.safe_load(
+    match[1],
+    permitted_classes: [Date, Time],
+    aliases: true
+  )
+  return [nil, "front matter must be a YAML mapping"] unless data.is_a?(Hash)
+
+  [data, nil]
+rescue Psych::Exception => e
+  [nil, "invalid YAML front matter: #{e.message.lines.first.to_s.strip}"]
 end
 
 html_files.each do |html_file|
@@ -188,6 +206,68 @@ unless ALLOW_DRAFTS
     if published_candidates.any?(&:file?)
       errors << "Reference draft was published in the normal build: #{slug}"
     end
+  end
+end
+
+general_entries = contract.fetch("general_entries")
+entry_files = general_entries.fetch("source_patterns").flat_map do |pattern|
+  PROJECT_DIR.glob(pattern)
+end.uniq.sort
+allowed_kinds = general_entries.fetch("allowed_kinds")
+metadata_key_pattern = Regexp.new(general_entries.fetch("metadata_key_pattern"))
+
+errors << "No general-entry source files matched the configured patterns" if entry_files.empty?
+
+entry_files.each do |entry_file|
+  relative_path = entry_file.relative_path_from(PROJECT_DIR)
+  front_matter, front_matter_error = read_front_matter(entry_file)
+  if front_matter_error
+    errors << "#{relative_path}: #{front_matter_error}"
+    next
+  end
+
+  general_entries.fetch("required_fields").each do |field|
+    value = front_matter[field]
+    missing = value.nil? || (value.respond_to?(:empty?) && value.empty?)
+    errors << "#{relative_path}: required general-entry field is missing: #{field}" if missing
+  end
+
+  kind = front_matter["kind"]
+  if kind && !allowed_kinds.include?(kind)
+    errors << "#{relative_path}: kind must be one of #{allowed_kinds.join(', ')}, found #{kind.inspect}"
+  end
+
+  topics = front_matter["topics"]
+  if topics && (!topics.is_a?(Array) || topics.empty?)
+    errors << "#{relative_path}: topics must be a non-empty YAML list"
+  elsif topics
+    topics.each do |topic|
+      unless topic.is_a?(String) && topic.match?(metadata_key_pattern)
+        errors << "#{relative_path}: invalid topic key: #{topic.inspect}"
+      end
+    end
+    errors << "#{relative_path}: topic keys must be unique" unless topics.uniq.length == topics.length
+  end
+
+  series = front_matter["series"]
+  if series && (!series.is_a?(String) || !series.match?(metadata_key_pattern))
+    errors << "#{relative_path}: invalid series key: #{series.inspect}"
+  end
+
+  summary = front_matter["summary"]
+  if summary && (!summary.is_a?(String) || summary.strip.empty? || summary.match?(/[\r\n<>]/))
+    errors << "#{relative_path}: summary must be non-empty, single-line plain text"
+  end
+
+  featured = front_matter["featured"]
+  unless featured.nil? || featured == true || featured == false
+    errors << "#{relative_path}: featured must be true or false"
+  end
+
+  image = front_matter["image"]
+  image_alt = front_matter["image_alt"]
+  if image && !image.to_s.strip.empty? && (!image_alt.is_a?(String) || image_alt.strip.empty?)
+    errors << "#{relative_path}: image_alt is required when image is present"
   end
 end
 

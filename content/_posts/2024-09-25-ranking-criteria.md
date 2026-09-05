@@ -7,6 +7,12 @@ tags:
 category: blog
 author: rkeswani
 description: An explanation of the criteria of my course rankings.
+kind: essay
+topics:
+- education
+series: ubc-course-notes
+summary: The criteria I use to evaluate and compare courses, from conceptual difficulty to workload and engagement.
+featured: false
 ---
 
 As a Computer Science Major at UBC, I've completed 20 different CS courses, served as a TA for three courses, and tutored for the BCS program. I want to share my experience to help you make informed decisions when selecting electives or structuring your course schedule. My goal is to provide you with all the details you need to choose courses that align with your academic goals and interests.
