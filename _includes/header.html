@@ -1,10 +1,4 @@
-{% assign header_pages = "Home,Blog,Projects,Tags,Course Reviews" | split: "," %}
-{% assign show_header = false %}
-{% if header_pages contains page.title %}
-    {% assign show_header = true %}
-{% endif %}
-
-{% if show_header %}
+{% if page.show_profile_header %}
     <header class="header-home {% if site.animation %}animated{% endif %}">
         {% if site.about %}
             <a class="link" href="{{ '/about/' | relative_url }}">

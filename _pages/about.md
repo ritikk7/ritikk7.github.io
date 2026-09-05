@@ -2,6 +2,8 @@
 title: About
 layout: page
 permalink: /about/
+page_class: "page about"
+nav_key: about
 ---
 ![Profile Image]({% if site.external-image %}{{ site.picture }}{% else %}{{ site.picture | relative_url }}{% endif %})
 

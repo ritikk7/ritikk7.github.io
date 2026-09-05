@@ -1,13 +1,13 @@
-<nav class="{% if page.title == "Home" %}nav-home{% else %}nav{% endif %}">
+<nav class="{% if page.nav_key == "home" %}nav-home{% else %}nav{% endif %}">
     <ul class="list">
-        {% if page.title != "Home" %}
+        {% if page.nav_key != "home" %}
             <li class="item">
                 <a class="link" href="{{ '/' | relative_url }}">Home</a>
             </li>
         {% endif %}
 
         {% if site.blog == true %}
-            {% if page.title != "Blog" %}
+            {% if page.nav_key != "blog" %}
                 <li class="item">
                     <a class="link" href="{{ '/blog/' | relative_url }}">Blog</a>
                 </li>
@@ -15,7 +15,7 @@
         {% endif %}
 
         {% if site.course-reviews == true %}
-            {% if page.title != "Course Reviews" %}
+            {% if page.nav_key != "course-reviews" %}
                 <li class="item">
                     <a class="link" href="{{ '/course-reviews/' | relative_url }}">Course&nbsp;Reviews</a>
                 </li>
@@ -23,7 +23,7 @@
         {% endif %}
 
         {% if site.projects == true %}
-            {% if page.title != "Projects" %}
+            {% if page.nav_key != "projects" %}
                 <li class="item">
                     <a class="link" href="{{ '/projects/' | relative_url }}">Projects</a>
                 </li>
@@ -31,7 +31,7 @@
         {% endif %}
 
         {% if site.about == true %}
-            {% if page.title != "About" %}
+            {% if page.nav_key != "about" %}
                 <li class="item">
                     <a class="link" href="{{ '/about/' | relative_url }}">About</a>
                 </li>

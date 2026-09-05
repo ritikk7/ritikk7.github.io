@@ -20,7 +20,34 @@ pages:
       - ityped@0.0.10
     forbidden_scripts:
       - particles.js/2.0.0/particles.min.js
+  projects/index.html:
+    main_class: projects
+    required_scripts:
+      - ityped@0.0.10
+    forbidden_scripts:
+      - particles.js/2.0.0/particles.min.js
+  tags/index.html:
+    main_class: tags
+    required_scripts:
+      - ityped@0.0.10
+    forbidden_scripts:
+      - particles.js/2.0.0/particles.min.js
+  about/index.html:
+    main_class: page
+    forbidden_scripts:
+      - particles.js/2.0.0/particles.min.js
+      - ityped@0.0.10
   cpsc-317-review/index.html:
+    main_class: post
+    forbidden_scripts:
+      - particles.js/2.0.0/particles.min.js
+      - ityped@0.0.10
+  work_experiences/imageworks/index.html:
+    main_class: post
+    forbidden_scripts:
+      - particles.js/2.0.0/particles.min.js
+      - ityped@0.0.10
+  teaching_experiences/221/index.html:
     main_class: post
     forbidden_scripts:
       - particles.js/2.0.0/particles.min.js
