@@ -8,38 +8,17 @@ home_shell: true
 particles: true
 ityped: true
 nav_key: home
+navigation_group: primary
 ---
 
-<section class="experience work-experience-section">
-    <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+<section class="home-introduction">
+    <p class="home-introduction__lead">Hi, I'm Ritik.</p>
 
-    {% assign sorted_work_experiences = site.work_experiences | sort: 'order' %}
-    {% for experience in sorted_work_experiences %}
-    <div class="experience-block">
-        {% include work-experience.html
-            title=experience.title
-            url=experience.url
-            logo=experience.logo
-            position=experience.position
-            time_worked=experience.time_worked 
-            skills=experience.skills %}
-    </div>
-    {% endfor %}
-</section>
+    <p>I write software, take photos, play football, watch a ridiculous number of movies, and jump into obscure rabbit holes.</p>
 
-<section class="experience teaching-experience-section">
-    <h2><i class="fas fa-graduation-cap"></i> TA Experience</h2>
+    <p>I grew up in New Delhi, moved to Vancouver to study Computer Science @ <a class="home-introduction__link home-introduction__link--ubc" href="https://vancouver.calendar.ubc.ca/faculties-colleges-and-schools/faculty-science/bachelor-science/computer-science">UBC</a>, and now live in Toronto, where I work on the systems behind the credit card application experience @ <a class="home-introduction__link home-introduction__link--capital-one" href="https://www.capitalone.com/tech/canada/">Capital One</a>.</p>
 
-    <img src="/assets/images/ubc-logo.png" alt="UBC Logo" class="ubc-logo" />
-    {% assign sorted_teaching_experiences = site.teaching_experiences | sort: 'order' %}
-    {% for experience in sorted_teaching_experiences %}
-    <div class="experience-block">
-        {% include teaching-experience.html 
-            url=experience.url 
-            course_number=experience.course_number 
-            course_name=experience.course_name 
-            time_worked=experience.time_worked 
-            skills=experience.skills %}
-    </div>
-    {% endfor %}
+    <p>Before that, I worked @ <a class="home-introduction__link home-introduction__link--imageworks" href="https://www.imageworks.com/">Sony Pictures</a>, building production software behind <a class="home-introduction__link home-introduction__link--imdb" href="https://www.imdb.com/name/nm16905991/">films</a> like the Academy Award-winning KPop Demon Hunters, Project Hail Mary, and projects across the Spider-Man universe.</p>
+
+    <p>I like ambitious projects, good stories, lifting heavy things, Real Madrid, and going to places I haven't been before.</p>
 </section>

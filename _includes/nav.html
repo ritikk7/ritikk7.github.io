@@ -1,7 +1,11 @@
-<nav class="{% if page.nav_key == "home" %}nav-home{% else %}nav{% endif %}">
+<nav class="{% if page.nav_key == "home" or page.navigation_style == "centered" %}nav-home{% else %}nav{% endif %}">
     <ul class="list">
         {% for item in site.data.navigation %}
-        {% if item.visible and page.nav_key != item.key %}
+        {% assign item_visible = item.visible %}
+        {% if page.navigation_group == "primary" %}
+            {% assign item_visible = item.primary %}
+        {% endif %}
+        {% if item_visible and page.nav_key != item.key %}
             <li class="item">
                 <a class="link" href="{{ item.url | relative_url }}">{% if item.keep_together %}{{ item.label | replace: " ", "&nbsp;" }}{% else %}{{ item.label }}{% endif %}</a>
             </li>

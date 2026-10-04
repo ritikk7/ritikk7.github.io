@@ -20,11 +20,16 @@ general_entries:
 pages:
   index.html:
     main_class: home
+    navigation: true
+    navigation_links:
+      - label: Work
+        url: /work/
     required_scripts:
       - particles.js/2.0.0/particles.min.js
       - ityped@0.0.10
   blog/index.html:
     main_class: blog
+    navigation: true
     required_scripts:
       - ityped@0.0.10
     forbidden_scripts:
@@ -37,6 +42,16 @@ pages:
       - particles.js/2.0.0/particles.min.js
   projects/index.html:
     main_class: projects
+    required_scripts:
+      - ityped@0.0.10
+    forbidden_scripts:
+      - particles.js/2.0.0/particles.min.js
+  work/index.html:
+    main_class: work
+    navigation: true
+    navigation_links:
+      - label: Home
+        url: /
     required_scripts:
       - ityped@0.0.10
     forbidden_scripts:

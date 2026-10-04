@@ -17,4 +17,6 @@
     </header>
 {% endif %}
 
-{% include nav.html %}
+{% unless page.show_navigation == false %}
+    {% include nav.html %}
+{% endunless %}

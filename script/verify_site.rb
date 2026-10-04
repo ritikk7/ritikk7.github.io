@@ -287,6 +287,27 @@ contract.fetch("pages").each do |relative_path, page_contract|
     errors << "#{relative_path}: expected main class #{expected_class.inspect}, found #{actual_classes.inspect}"
   end
 
+  if page_contract.key?("navigation")
+    navigation_count = document.css("nav.nav, nav.nav-home").length
+    expected_navigation_count = page_contract.fetch("navigation") ? 1 : 0
+    unless navigation_count == expected_navigation_count
+      errors << "#{relative_path}: expected #{expected_navigation_count} navigation region(s), found #{navigation_count}"
+    end
+  end
+
+  if page_contract.key?("navigation_links")
+    actual_navigation_links = document.css("nav.nav a.link, nav.nav-home a.link").map do |link|
+      {
+        "label" => link.text.tr("\u00A0", " ").strip,
+        "url" => link["href"]
+      }
+    end
+    expected_navigation_links = page_contract.fetch("navigation_links")
+    unless actual_navigation_links == expected_navigation_links
+      errors << "#{relative_path}: expected navigation links #{expected_navigation_links.inspect}, found #{actual_navigation_links.inspect}"
+    end
+  end
+
   page_contract.fetch("required_scripts", []).each do |script_fragment|
     unless source.include?(script_fragment)
       errors << "#{relative_path}: required script is missing: #{script_fragment}"

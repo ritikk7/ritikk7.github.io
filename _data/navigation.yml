@@ -2,6 +2,7 @@
   label: Home
   url: /
   visible: true
+  primary: true
 
 - key: blog
   label: Blog
@@ -18,6 +19,12 @@
   label: Projects
   url: /projects/
   visible: true
+
+- key: work
+  label: Work
+  url: /work/
+  visible: false
+  primary: true
 
 - key: about
   label: About

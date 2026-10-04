@@ -1,7 +1,13 @@
 <div class="work-experience">
-    <a href="{{ include.url }}" class="company-logo">
-        <img src="{{ include.logo }}" alt="{{ include.company }} Logo" />
-    </a>
+    {% if include.detail_ready %}
+        <a href="{{ include.url | relative_url }}" class="company-logo" aria-label="Read about {{ include.title }}">
+            <img src="{{ include.logo | relative_url }}" alt="{{ include.title }} logo" />
+        </a>
+    {% else %}
+        <span class="company-logo">
+            <img src="{{ include.logo | relative_url }}" alt="{{ include.title }} logo" />
+        </span>
+    {% endif %}
     <h3>{{ include.position }}</h3>
     <p>{{ include.time_worked }}</p>
 

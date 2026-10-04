@@ -1,0 +1,31 @@
+---
+layout: page
+title: Work
+permalink: /work/
+page_class: work
+show_profile_header: true
+home_shell: false
+particles: false
+ityped: true
+nav_key: work
+navigation_group: primary
+navigation_style: centered
+---
+
+<section class="experience work-experience-section">
+    <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+
+    {% assign sorted_work_experiences = site.work_experiences | sort: 'order' %}
+    {% for experience in sorted_work_experiences %}
+    <div class="experience-block">
+        {% include work-experience.html
+            title=experience.title
+            url=experience.url
+            detail_ready=experience.detail_ready
+            logo=experience.logo
+            position=experience.position
+            time_worked=experience.time_worked
+            skills=experience.skills %}
+    </div>
+    {% endfor %}
+</section>
